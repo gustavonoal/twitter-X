@@ -1,0 +1,560 @@
+/*
+ * Cores do Dark Mode
+ */
+:root {
+    --color-bg-primary: #000000; /* Fundo principal */
+    --color-bg-secondary: #16181C; /* Fundo de componentes (widgets, posts) */
+    --color-text-primary: #D9D9D9; /* Texto principal (branco suave) */
+    --color-text-secondary: #71767B; /* Texto secundário (cinza) */
+    --color-border: #2F3336; /* Linhas divisórias */
+    --color-primary-blue: #1D9BF0; /* Cor de destaque (azul) */
+    --color-hover: #081118; /* Cor de hover suave */
+    --color-icon: #71767B; /* Cor dos ícones não ativos */
+    --color-white: #FFFFFF;
+}
+
+/* * Estilos Gerais e Reset
+ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    font-family: 'Arial', sans-serif; /* Use uma fonte semelhante */
+    font-size: 15px;
+    line-height: 1.3;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* * Layout Principal em 3 Colunas
+ */
+.app-container {
+    display: flex;
+    max-width: 1300px; /* Largura total aproximada */
+    width: 100%;
+}
+
+/* ------------------------------------------- */
+/* 1. BARRA LATERAL ESQUERDA (NAVEGAÇÃO) */
+/* ------------------------------------------- */
+.sidebar-left {
+    width: 275px; /* Largura aproximada */
+    padding: 10px 30px 20px 10px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-right: 1px solid var(--color-border);
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    margin-bottom: 5px;
+    border-radius: 9999px; /* Formato de pílula */
+    font-size: 20px;
+    font-weight: 700;
+    transition: background-color 0.2s;
+    width: fit-content;
+}
+
+.nav-item i {
+    font-size: 22px;
+    margin-right: 20px;
+}
+
+.nav-item:hover {
+    background-color: var(--color-hover);
+}
+
+.nav-item.logo i {
+    font-size: 28px;
+    margin-left: 10px;
+    margin-bottom: 5px;
+    color: var(--color-white);
+}
+
+.nav-item.active {
+    color: var(--color-white); /* Item ativo mais branco */
+}
+
+.tweet-button {
+    background-color: var(--color-white); /* Cor de fundo branca */
+    color: var(--color-bg-primary);     /* Cor do texto preta (ou a cor do fundo principal para contraste) */
+    border: none;
+    border-radius: 9999px;
+    padding: 15px 0;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 15px;
+    width: 90%;
+    transition: background-color 0.2s;
+}
+
+.tweet-button:hover {
+    background-color: #E7E7E8; /* Um branco ligeiramente mais escuro para o efeito hover */
+}
+
+/* Perfil do Usuário no Rodapé */
+.user-profile {
+    display: flex;
+    align-items: center;
+    padding: 12px;
+    border-radius: 9999px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    margin-top: 20px;
+}
+
+.user-profile:hover {
+    background-color: var(--color-hover);
+}
+
+.user-profile .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #3e3e3e; /* Cor simulada do avatar */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+    flex-grow: 1;
+}
+
+.user-info .name {
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.user-info .handle {
+    color: var(--color-text-secondary);
+    font-size: 14px;
+    line-height: 1.2;
+}
+
+.user-profile .dots {
+    color: var(--color-white);
+    margin-left: 15px;
+}
+
+/* ------------------------------------------- */
+/* 2. COLUNA DO MEIO (FEED) */
+/* ------------------------------------------- */
+.main-content {
+    width: 600px; /* Largura fixa do feed */
+    border-right: 1px solid var(--color-border);
+    border-left: 1px solid var(--color-border);
+}
+
+/* Cabeçalho do Feed */
+.main-header {
+    position: sticky;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.85); /* Fundo com transparência para efeito "sticky" */
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+    height: 53px;
+    z-index: 10;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.tabs {
+    display: flex;
+    flex-grow: 1;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+}
+
+.tab-item {
+    font-size: 15px;
+    font-weight: 600;
+    padding: 15px 0;
+    transition: background-color 0.2s;
+    flex-grow: 1;
+    text-align: center;
+    color: var(--color-text-secondary);
+}
+
+.tab-item:hover {
+    background-color: var(--color-hover);
+}
+
+.tab-item.active {
+    color: var(--color-white);
+    position: relative;
+}
+
+.tab-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 55px;
+    background-color: var(--color-primary-blue);
+    border-radius: 2px;
+}
+
+.settings-icon {
+    font-size: 20px;
+    padding: 10px;
+    color: var(--color-white);
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.settings-icon:hover {
+    background-color: var(--color-hover);
+}
+
+/* Novo Post */
+.new-post {
+    display: flex;
+    padding: 15px 16px 10px 16px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.avatar-small {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #3e3e3e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--color-white);
+    margin-right: 10px;
+}
+
+.post-input {
+    flex-grow: 1;
+}
+
+.post-input input {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--color-text-primary);
+    padding: 8px 0;
+    outline: none;
+}
+
+.post-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+.post-actions .icons i {
+    color: var(--color-primary-blue);
+    margin-right: 15px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.post-actions .post-btn {
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    opacity: 0.5; /* Simula o botão desabilitado/não-focado */
+}
+
+/* Estilo do Post no Feed */
+.feed-post {
+    display: flex;
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.2s;
+    cursor: pointer;
+}
+
+.feed-post:hover {
+    background-color: var(--color-hover);
+}
+
+.post-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #3e3e3e; /* Avatar genérico */
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.post-body {
+    flex-grow: 1;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.post-header .post-name {
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.post-header .post-handle, .post-header .post-time {
+    color: var(--color-text-secondary);
+    font-size: 15px;
+}
+
+.post-header .post-dots {
+    margin-left: auto;
+    color: var(--color-text-secondary);
+    font-size: 15px;
+    padding: 5px;
+    border-radius: 50%;
+}
+
+.post-header .post-dots:hover {
+    background-color: rgba(29, 155, 240, 0.1); /* Hover azul suave */
+    color: var(--color-primary-blue);
+}
+
+.post-text {
+    margin-bottom: 10px;
+    white-space: pre-wrap; /* Para preservar quebras de linha se houver */
+}
+
+/* Imagem ÚNICA (Ex: Urso) */
+.post-image-container {
+    border-radius: 15px;
+    overflow: hidden;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--color-border);
+}
+
+.post-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Simular hover específico para estatísticas (ex: coração fica vermelho, retweet verde) */
+.post-stats {
+    display: flex;
+    justify-content: space-between;
+    max-width: 425px; /* Alinhar com o layout da imagem */
+    margin-top: 10px;
+    color: var(--color-text-secondary);
+    font-size: 13px;
+}
+
+.post-stats .stat {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.post-stats .stat i {
+    margin-right: 8px;
+    font-size: 16px;
+}
+
+.post-stats .stat:nth-child(3):hover { color: #F91880; } /* Coração */
+
+
+/* ------------------------------------------- */
+/* NOVO ESTILO: Post com Duas Imagens Lado a Lado */
+/* ------------------------------------------- */
+
+/* Container Flexbox para as duas imagens */
+.post-two-images-container {
+    display: flex;
+    gap: 5px; /* Espaço entre as duas imagens */
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--color-border);
+    border-radius: 15px;
+    overflow: hidden; /* Garante que o border-radius funcione */
+}
+
+/* Envolve cada imagem */
+.image-wrapper {
+    flex: 1; /* Faz com que cada imagem ocupe 50% do espaço */
+    overflow: hidden; /* Necessário para arredondamento de cantos */
+}
+
+/* Garante que as imagens preencham seus respectivos wrappers */
+.post-image-half {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* Garante que a imagem cubra a área sem distorcer */
+}
+
+/* Ajuste de cantos arredondados do container principal */
+.post-two-images-container .image-wrapper:first-child {
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+
+.post-two-images-container .image-wrapper:last-child {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+/* Regra para sumir com o bloco secundário, se existir */
+.secondary-content-block {
+    display: none; 
+}
+
+
+/* ------------------------------------------- */
+/* 3. BARRA LATERAL DIREITA (WIDGETS) */
+/* ------------------------------------------- */
+.sidebar-right {
+    width: 350px; /* Largura aproximada */
+    padding: 10px 16px;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+}
+
+/* Barra de Busca */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: var(--color-bg-secondary);
+    border-radius: 9999px;
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+
+.search-bar i {
+    color: var(--color-text-secondary);
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.search-bar input {
+    background: none;
+    border: none;
+    outline: none;
+    color: var(--color-text-primary);
+    font-size: 15px;
+    width: 100%;
+}
+
+.search-bar:focus-within {
+    border: 1px solid var(--color-primary-blue);
+    background-color: var(--color-bg-primary); /* Fica preto ao focar */
+}
+
+/* Estilo Geral dos Widgets */
+.widget {
+    background-color: var(--color-bg-secondary);
+    border-radius: 15px;
+    padding: 12px 16px;
+    margin-bottom: 15px;
+}
+
+.widget h2 {
+    font-size: 20px;
+    font-weight: 900;
+    margin-bottom: 10px;
+    color: var(--color-white);
+}
+
+/* Widget Premium */
+.premium-widget p {
+    color: var(--color-text-primary);
+    font-size: 15px;
+    margin-bottom: 15px;
+}
+
+.premium-btn {
+    background-color: var(--color-primary-blue);
+    color: var(--color-white);
+    border: none;
+    border-radius: 9999px;
+    padding: 10px 16px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+/* Widgets de Notícias e Trending */
+.news-item, .trending-item {
+    padding: 10px 0;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.news-item:not(:last-child), .trending-item:not(:last-child) {
+    border-bottom: 1px solid var(--color-border);
+}
+
+.news-item:hover, .trending-item:hover {
+    background-color: var(--color-hover);
+}
+
+.news-category, .trending-category {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    display: block;
+    margin-bottom: 2px;
+}
+
+.news-title, .trending-title {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--color-white);
+}
+
+.news-stats, .trending-stats {
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    display: block;
+    margin-top: 2px;
+}
